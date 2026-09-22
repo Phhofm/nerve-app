@@ -1,6 +1,10 @@
+# CPU by default. For a GPU, install ONE of:
+#   pip install onnxruntime-gpu      # NVIDIA (CUDA)
+#   pip install onnxruntime-directml # Windows: any GPU incl. Intel/AMD
+#   pip install onnxruntime-openvino # Intel (OpenVINO)
+# Apple Silicon works with plain onnxruntime (CoreML).
 gradio
-torch
-safetensors
+onnxruntime
 huggingface_hub
 Pillow
 numpy
