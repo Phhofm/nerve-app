@@ -1,0 +1,6 @@
+gradio
+torch
+safetensors
+huggingface_hub
+Pillow
+numpy
