@@ -1,5 +1,7 @@
 # NERVE — local app
 
+**NERVE links:** [models & configs](https://huggingface.co/Phips/NERVE) · [try it online (ZeroGPU)](https://huggingface.co/spaces/Phips/nerve) · [local app](https://github.com/Phhofm/nerve-app) · [train your own (Colab)](https://github.com/Phhofm/nerve-train)
+
 A small local GUI for the released [NERVE](https://huggingface.co/Phips/NERVE) models.
 Upscale a single image, or a whole folder, and save uncompressed PNGs.
 
