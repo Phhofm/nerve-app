@@ -1,0 +1,6 @@
+# Windows: DirectML runs on any DX12 GPU (NVIDIA / AMD / Intel) with NO CUDA install.
+gradio
+onnxruntime-directml
+huggingface_hub
+Pillow
+numpy

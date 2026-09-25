@@ -1,0 +1,6 @@
+# macOS: plain onnxruntime uses CoreML (Apple Silicon GPU / Neural Engine).
+gradio
+onnxruntime
+huggingface_hub
+Pillow
+numpy

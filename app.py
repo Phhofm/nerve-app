@@ -163,4 +163,5 @@ with gr.Blocks(title="NERVE") as demo:
 
 
 if __name__ == "__main__":
-    demo.queue().launch()
+    # inbrowser=True -> double-clicking the packaged app opens the UI in a browser tab
+    demo.queue().launch(server_name="127.0.0.1", inbrowser=True)
