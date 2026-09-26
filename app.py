@@ -42,6 +42,43 @@ OVERLAP = 32
 
 IMAGE_TYPES = {".png", ".jpg", ".jpeg", ".webp", ".bmp", ".tif", ".tiff"}
 
+GPU_PROVIDERS = {
+    "CUDAExecutionProvider": "GPU (CUDA)",
+    "DmlExecutionProvider": "GPU (DirectML)",
+    "CoreMLExecutionProvider": "GPU (CoreML)",
+    "OpenVINOExecutionProvider": "GPU (OpenVINO)",
+    "TensorrtExecutionProvider": "GPU (TensorRT)",
+}
+
+
+def _has_gpu() -> bool:
+    """Best-effort check for a usable GPU on this machine."""
+    import os
+    import platform
+    import shutil
+
+    if shutil.which("nvidia-smi"):
+        return True
+    if os.path.isdir("/dev/dri"):  # Linux DRM (NVIDIA/AMD/Intel)
+        return True
+    return platform.system() == "Darwin"
+
+
+def accelerator_status() -> str:
+    """Markdown banner: green on GPU, amber if a GPU exists but ORT is CPU-only."""
+    available = ort.get_available_providers()
+    for prov, label in GPU_PROVIDERS.items():
+        if prov in available:
+            return f"#### ✅ Running on **{label}**."
+    if _has_gpu():
+        return (
+            "#### ⚠️ A GPU was detected, but the **GPU build of ONNX Runtime is not installed** "
+            "\u2014 running on **CPU (much slower)**.\n\n"
+            "To use your GPU: install `onnxruntime-gpu` (`pip install onnxruntime-gpu`) and restart, "
+            "or launch with `./start.sh`, which installs it for you."
+        )
+    return "#### ℹ️ No GPU detected \u2014 running on **CPU**. It works, just slower."
+
 
 def get_session(key: str) -> ort.InferenceSession:
     if key not in _sessions:

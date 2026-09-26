@@ -32,7 +32,10 @@ terminal, no CUDA install.
 | Linux | **CPU** by default; NVIDIA if you install `onnxruntime-gpu` | optional |
 | any | CPU fallback | none |
 
-The app shows which accelerator it picked.
+The app shows a **status banner** at the top:
+- **green** — running on the GPU (CUDA / DirectML / CoreML / OpenVINO);
+- **amber** — a GPU was detected but the GPU build of ONNX Runtime isn't installed, so it's on CPU (it tells you the exact command to fix it);
+- **grey** — no GPU detected, running on CPU.
 
 ## If you already have Python
 
